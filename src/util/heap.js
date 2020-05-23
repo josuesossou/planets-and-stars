@@ -1,5 +1,3 @@
-import Node from './heapElement'
-
 export default class MaxHeap {
 
     constructor () {
@@ -12,10 +10,10 @@ export default class MaxHeap {
         return this.heap[1]
     }
     
-    insert (nodeId) {
+    insert (node) {
 
         /* Inserting the new node at the end of the heap array */
-        this.heap.push(new Node(nodeId))
+        this.heap.push(node)
 
         /* Finding the correct position for the new node */
 
