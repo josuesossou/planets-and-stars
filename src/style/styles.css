@@ -1,0 +1,33 @@
+.text-white {
+    color: #ffffff;
+}
+.text-lightWhite {
+    color: rgba(255, 255, 255, 0.85)
+}
+.text-black {
+    color:#000000;
+}
+.text-grey {
+    color: rgba(0, 0, 0, 0.60)
+}
+.text-lightGrey {
+    color: rgba(0, 0, 0, 0.40)
+}
+.background-black {
+    background-color: #000000
+}
+.background-white {
+    background-color: #ffffffff
+}
+.orange {
+    color: rgba(255, 69, 0, 0.57)
+}
+.font-family-heavy {
+    font-family: 'Avenir, Heavy';
+}
+.font-family-medium {
+    font-family: 'Avenir, Medium';
+}
+.font-family-light {
+    font-family: 'Avenir, Light';
+}

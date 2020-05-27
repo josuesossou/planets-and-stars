@@ -1,0 +1,23 @@
+
+#alert-message {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30vw;
+    height: auto;
+    min-height: 3em;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5em;
+    cursor: default;
+}
+.alert-message-show {
+    opacity: 1;
+    transition: opacity 0.5s
+}
+.alert-message-hide {
+    opacity: 0;
+    transition: opacity 0.5s
+}

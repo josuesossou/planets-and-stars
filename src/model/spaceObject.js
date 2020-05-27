@@ -13,14 +13,16 @@ export default class SpaceObject {
      * @param {element} canvas The canvas on which to fill the name of the planet. it can be null
      * @param {String} type The type of space object, wether it is a planet or star
      */
-    constructor(radius, mass, color, name, canvas, type) {
+    constructor(radius, mass, color, name, canvas, type, scaleFactor) {
+        if (!scaleFactor || scaleFactor < 1) scaleFactor = 1
+
         this.id = uuidv4()
         this.objectData = {
             position: [],
             orbit: 0,
             speed: 0
         } // example {orbit: 10, speed: 10, position: [px,py,pz]}
-        this.radius = radius/10
+        this.radius = radius / scaleFactor
         this.mass = mass
         this.color = color
         this.name = name
@@ -28,6 +30,7 @@ export default class SpaceObject {
         this.canvas = canvas
         this.objectMesh = null // holds the planet object
         this.type  = type
+        this.scaleFactor = scaleFactor
     }
 
     /**
@@ -104,7 +107,7 @@ export default class SpaceObject {
      */
     setOrbit() {
         const maxObj =this.spaceObjectAdjecencies.getMax()
-        this.objectData.orbit = maxObj.distance/10 + maxObj.radius
+        this.objectData.orbit = (maxObj.distance / this.scaleFactor) + maxObj.radius
     }
 
     /**
@@ -112,7 +115,7 @@ export default class SpaceObject {
      */
     setSpeed() {
         const maxObj = this.spaceObjectAdjecencies.getMax()
-        this.objectData.speed  = maxObj.speed
+        this.objectData.speed  = maxObj.speed / this.scaleFactor
     }
 
     /**

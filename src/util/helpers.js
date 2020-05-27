@@ -8,8 +8,8 @@ import SpaceObject from '../model/spaceObject'
  * @param {string} name the name of the planet
  * @param {element} canvas The canvas on which to fill the name of the planet. it can be null
  */
-export const createSpaceObject = (radius, mass, color, name, canvas, type) => {
-    return new SpaceObject(radius, mass, color, name, canvas, type)
+export const createSpaceObject = (radius, mass, color, name, canvas, type, scaleFactor) => {
+    return new SpaceObject(radius, mass, color, name, canvas, type, scaleFactor)
 }
 
 /**

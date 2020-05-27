@@ -67,7 +67,7 @@ export const solarSystem = [
         name: 'Sun',
         radius: 109/2,
         mass: 333000,
-        color: null,
+        color: 'orange',
         type: 'Star',
         position:[0, 0, 0]
     }

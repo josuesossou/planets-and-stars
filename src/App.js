@@ -4,6 +4,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { createSpaceObject, calculateDistance, calculateGravitationalForce, calculateSpeed } from './util/helpers'
 import { solarSystem } from './data/data'
 import Node from '././util/heapElement'
+import './App.css'
+
+import { Input, Select, CloseButton, Text } from './shared/Shared'
+import AlertMessage from './conponents/AlertMessage'
+import CurrentMode from './conponents/CurrentMode'
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -14,7 +20,7 @@ class App extends React.Component {
 		this.state = {
 			modeType: 'freeModeData',
 			freeModeData: {
-				scaleFactor: 10
+				
 			},
 			createSolarSytemModeData: { // will only allow one star to be created
 
@@ -23,6 +29,9 @@ class App extends React.Component {
 
 			},
 			spaceObjects: [], // array of space objects
+			scaleFactor: 1,
+			textScaleFactor: 10, 
+			show: true
 		}
 
 		this.camera = null
@@ -50,40 +59,8 @@ class App extends React.Component {
 		// use ref as a mount point of the Three.js scene instead of the document.body
 		this.mount.appendChild( this.renderer.domElement );
 
-
-
-		// var geometry = new THREE.BoxGeometry( 10, 10, 10 );
-		// var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-		// this.cube = new THREE.Mesh( geometry, material );
-		// this.group = new THREE.Group();
-
-		// this.cube.position.set(100,100, 100)
-
-		// this.group.add(this.cube)
-		// this.scene.add( this.group )
-
 		if (this.state.modeType === 'freeModeData') 
 			this.generateSolarSystem()
-
-		// this.camera.position.z = 100;
-		// this.camera.position.x = 0
-		// this.camera.lookAt(this.scene.position);	
-
-
-
-		// this.controls.minDistance = 5
-		// this.controls.maxDistance = 250
-
-		// this.controls.rotateSpeed = 1.0;
-		// this.controls.zoomSpeed = 1.2;
-		// this.controls.panSpeed = 0.8;
-		// controls.noZoom = false;
-		// controls.noPan = false;
-		// controls.staticMoving = true;
-		// controls.dynamicDampingFactor = 0.3;
-		// var 
-		// animate();
-		// this.renderer.render( this.scene, this.camera );
 	}
 
 	/**
@@ -91,7 +68,7 @@ class App extends React.Component {
 	 */
 	generateSolarSystem() {
 		solarSystem.forEach((obj) => {
-			const solarSysObject = createSpaceObject(obj.radius, obj.mass, obj.color, obj.name, document.createElement('canvas'), obj.type)
+			const solarSysObject = createSpaceObject(obj.radius, obj.mass, obj.color, obj.name, document.createElement('canvas'), obj.type, this.state.scaleFactor)
 			solarSysObject.setPosition(obj.position[0], obj.position[1], obj.position[2])
 
 			this.state.spaceObjects.push(solarSysObject)
@@ -150,13 +127,13 @@ class App extends React.Component {
 		requestAnimationFrame(this.animate);
 
 		this.state.spaceObjects.forEach((sObject) => {
-			const scaleFactor = this.state[this.state.modeType].scaleFactor 
+			const textScaleFactor = this.state.textScaleFactor  
 			const sprite = sObject.objectMesh.children[0];
-			const scale = this.scaleVector.subVectors(sObject.objectMesh.position, this.camera.position).length() / scaleFactor;
+			const scale = this.scaleVector.subVectors(sObject.objectMesh.position, this.camera.position).length() / textScaleFactor;
 
 			sprite.scale.set(scale, scale, 1);
 			const orbit = sObject.type === 'Star' ? 0 : sObject.objectData.orbit;
-			const speed = sObject.objectData.speed/10;
+			const speed = sObject.objectData.speed;
 
 
 			sObject.objectMesh.position.x = Math.cos(timestamp * speed) * orbit;
@@ -171,8 +148,26 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<div ref={ref => (this.mount = ref)} style={{  width: '100vw', height: '100vh', overflow: 'hidden' }}/>
-				{/* <h2>Hello World</h2>
-				<button>Add a sphere</button> */}
+				<div id="settings">
+					<div>
+						<label>Scale</label>
+						<select id="">
+							<option value="up" selected>Up</option>
+							<option value="up" selected>Up</option>
+						</select>
+						<input type="number" min="1" max="20"/>
+					</div>
+					<Input disabled value="hello"/>
+					<Select  options={["hello", "hi", "ok"]}/>
+					<br />
+					<CloseButton radius={50} style={{ position: "relative", left: '50%'}} showHideText />
+					<Text />
+					<div id="choose-mode"></div>
+					<CurrentMode mode={'Solar System'} />
+				</div>
+				<AlertMessage message={'Press Esc to bring out the menu'} />
+				
+				
 			</div>
 		);
 	}
