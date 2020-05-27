@@ -1,7 +1,7 @@
 import React from 'react'
 import Text from './Text'
-import { Colors } from '../style/inlineStyles'
-import '../style/closeButton.css'
+import { Colors } from '../styles/inlineStyles'
+import '../styles/closeButton.css'
 import Close from '../assets/close@2x.png'
 
 /**

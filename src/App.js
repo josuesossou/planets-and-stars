@@ -7,8 +7,7 @@ import Node from '././util/heapElement'
 import './App.css'
 
 import { Input, Select, CloseButton, Text } from './shared/Shared'
-import AlertMessage from './conponents/AlertMessage'
-import CurrentMode from './conponents/CurrentMode'
+import { AlertMessage, CurrentMode, Scale, ChooseMode } from './conponents/Components'
 
 
 class App extends React.Component {
@@ -149,14 +148,6 @@ class App extends React.Component {
 			<div className="App">
 				<div ref={ref => (this.mount = ref)} style={{  width: '100vw', height: '100vh', overflow: 'hidden' }}/>
 				<div id="settings">
-					<div>
-						<label>Scale</label>
-						<select id="">
-							<option value="up" selected>Up</option>
-							<option value="up" selected>Up</option>
-						</select>
-						<input type="number" min="1" max="20"/>
-					</div>
 					<Input disabled value="hello"/>
 					<Select  options={["hello", "hi", "ok"]}/>
 					<br />
@@ -164,6 +155,9 @@ class App extends React.Component {
 					<Text />
 					<div id="choose-mode"></div>
 					<CurrentMode mode={'Solar System'} />
+					<Scale />
+					<br />
+					<ChooseMode />
 				</div>
 				<AlertMessage message={'Press Esc to bring out the menu'} />
 				

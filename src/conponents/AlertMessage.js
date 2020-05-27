@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, CloseButton } from '../shared/Shared'
-import '../style/alertMessage.css'
-import '../style/styles.css'
+import '../styles/alertMessage.css'
+import '../styles/styles.css'
 
 /**
  * @param {string} message the message to display

@@ -1,0 +1,11 @@
+#scale-wrapper {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+#inputs-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}

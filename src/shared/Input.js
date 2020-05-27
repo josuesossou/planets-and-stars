@@ -1,5 +1,5 @@
 import React from 'react'
-import { Colors } from '../style/inlineStyles'
+import { Colors } from '../styles/inlineStyles'
 
 /**
  * @param {string} type input type
@@ -7,15 +7,19 @@ import { Colors } from '../style/inlineStyles'
  * @param {function} onChange callback event when the value is changed
  * @param {string} placeholder placeholder text of the input
  * @param {boolean} disabled whether to disable the input
+ * @param {number} min if type is number, this represents the minimum value allowed
+ * @param {number} max if type is number, this represents the maximum value allowed
  */
-export default ({ type, value, onChange, placeholder, disabled, style }) => (
-    <div style={{ ...style, ...styles.wrapperStyle, borderColor: disabled ? Colors.lightGrey : Colors.black }}>
+export default ({ type, value, onChange, placeholder, disabled, style, min, max, }) => (
+    <div style={{ ...style, ...styles.wrapperStyle, borderColor: disabled ? Colors.lightGrey : Colors.black, padding: 5 }}>
         <input 
             type={type} 
             value={value} 
             onChange={onChange} 
             placeholder={placeholder} 
-            disabled={disabled} 
+            disabled={disabled}
+            min={min}
+            max={max}
             style={{ ...styles.inputStyle, borderColor: disabled ? Colors.lightGrey : Colors.black }} 
         />  
     </div>

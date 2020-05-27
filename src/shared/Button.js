@@ -1,11 +1,11 @@
 import React from 'react'
 import Text from './Text'
-import { Colors } from '../style/inlineStyles'
+import { Colors } from '../styles/inlineStyles'
 
 /**
  * @param {function} onClick on click function
  * @param {string} text text of button
- * @param {string} type type of button. Values dumb, normal,or black
+ * @param {string} type type of button. Values custom, normal,or black
  * @param {object} textStyle style of the text
  * @param {boolean} capitalize whether to capitalize the text or not
  * @param {boolean} disabled whether to disable the button
@@ -13,7 +13,7 @@ import { Colors } from '../style/inlineStyles'
 export default ({ onClick, text, type, textStyle, capitalize, style, disabled }) => (
     <div>
         {
-            type === 'dumb' ?
+            type === 'custom' ?
                 (
                     <button style={{ ...style, ...styles.borderStyle, borderColor: Colors.black }}>
                         <Text color={Colors.black} style={textStyle} capitalize={capitalize} text={text} />
@@ -22,7 +22,7 @@ export default ({ onClick, text, type, textStyle, capitalize, style, disabled })
         }
 
         {
-            type === 'normal' ?
+            !type || type === 'normal' ?
                 (
                     <button onClick={onClick} style={{ ...style, ...styles.borderStyle, borderColor: disabled ? Colors.lightGrey : Colors.black}}>
                         <Text color={disabled ? Colors.lightGrey : Colors.black} style={textStyle} capitalize={capitalize} text={text} />

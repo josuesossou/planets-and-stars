@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from '../shared/Shared'
-import { Colors } from '../style/inlineStyles'
+import { Colors } from '../styles/inlineStyles'
 
 
 /**
@@ -18,7 +18,7 @@ export default ({ mode }) => (
                 border: `2px solid ${Colors.orange}`,
                 padding: 10,
                 width: '100%',
-                height: 50,
+                height: 40,
                 display: 'flex',
                 position: 'relative',
                 alignItems: 'center',

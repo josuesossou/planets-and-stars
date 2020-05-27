@@ -1,5 +1,5 @@
 import React from 'react'
-import { Colors } from '../style/inlineStyles'
+import { Colors } from '../styles/inlineStyles'
 
 /**
  * @param {string} type input type
@@ -9,8 +9,8 @@ import { Colors } from '../style/inlineStyles'
  * @param {boolean} disabled whether to disable the input
  * @param {string[]} options options of the select. First option in the array will be set automatically
  */
-export default ({ onChange, placeholder, style, options }) => (
-    <div style={{ ...style, ...styles.wrapperStyle, borderColor: Colors.black }}>
+export default ({ onChange, style, options }) => (
+    <div style={{ ...style, ...styles.wrapperStyle, borderColor: Colors.black, padding: 5 }}>
         <select 
             style={{ ...styles.selectStyle, borderColor: Colors.black }} 
             onChange={onChange}
