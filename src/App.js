@@ -7,7 +7,8 @@ import Node from '././util/heapElement'
 import './App.css'
 
 import { Input, Select, CloseButton, Text } from './shared/Shared'
-import { AlertMessage, CurrentMode, Scale, ChooseMode } from './conponents/Components'
+import { AlertMessage, CurrentMode, Scale, ChooseMode, Plan } from './conponents/Components'
+import { SOLAR_SYSTEM, STANDARD_PLAN_DISCRIPTION } from './styles/strings'
 
 
 class App extends React.Component {
@@ -160,6 +161,10 @@ class App extends React.Component {
 					<ChooseMode />
 				</div>
 				<AlertMessage message={'Press Esc to bring out the menu'} />
+				<div style={{ width: '60%', backgroundColor: 'white', position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)', display: 'flex'}} >
+					<Plan planTitle={'Standard'} monthlyPrice={0} discription={STANDARD_PLAN_DISCRIPTION} planOffers={[`${SOLAR_SYSTEM}`]} />
+					<Plan planTitle={'Standard'} monthlyPrice={0} discription={STANDARD_PLAN_DISCRIPTION} planOffers={[`${SOLAR_SYSTEM}`]} />
+				</div>
 				
 				
 			</div>
