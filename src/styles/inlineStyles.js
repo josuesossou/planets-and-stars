@@ -12,3 +12,10 @@ export const Fonts = {
     medium: 'Avenir, Medium',
     light: 'Avenir, Light',
 }
+export const FontSizes = {
+    largestText: 38, // overly sized text
+    largeText: 20, // title
+    mediumText: 15, // subtitle
+    smallText:  12, // discription
+    smallestText: 9 // no use for it for now
+}

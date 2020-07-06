@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    padding: 4em;
+    padding: 0 4em;
 }
 #plan-wrapper .monthly-price {
     display: flex;
@@ -21,4 +21,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 10px 0;
+}
+#plan-wrapper .plan-offers img {
+    width: 1.6em;
 }

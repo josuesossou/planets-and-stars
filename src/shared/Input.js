@@ -1,5 +1,6 @@
 import React from 'react'
 import { Colors } from '../styles/inlineStyles'
+import Text from './Text'
 
 /**
  * @param {string} type input type
@@ -10,8 +11,14 @@ import { Colors } from '../styles/inlineStyles'
  * @param {number} min if type is number, this represents the minimum value allowed
  * @param {number} max if type is number, this represents the maximum value allowed
  */
-export default ({ type, value, onChange, placeholder, disabled, style, min, max, }) => (
-    <div style={{ ...style, ...styles.wrapperStyle, borderColor: disabled ? Colors.lightGrey : Colors.black, padding: 5 }}>
+export default ({ type, value, onChange, placeholder, disabled, style, min, max, error, borderColor }) => (
+    <div 
+        style={{
+            ...styles.wrapperStyle, 
+            ...style,
+            borderColor: disabled ? Colors.lightGrey : borderColor || Colors.black, 
+            padding: 5 
+        }}>
         <input 
             type={type} 
             value={value} 
@@ -20,15 +27,19 @@ export default ({ type, value, onChange, placeholder, disabled, style, min, max,
             disabled={disabled}
             min={min}
             max={max}
-            style={{ ...styles.inputStyle, borderColor: disabled ? Colors.lightGrey : Colors.black }} 
+            style={styles.inputStyle} 
         />  
+        {
+            error && error.show ? 
+                <Text text={error.message} color={Colors.orange} /> : null
+        }
     </div>
 )
 
 const styles = {
     inputStyle: {
         outline: 'none',
-        border: '0',
+        border: 0,
         borderRadius: 0,
         width: '100%',
         height: '100%',

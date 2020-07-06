@@ -4,17 +4,13 @@ import { Colors } from '../styles/inlineStyles'
 import { SOLAR_SYSTEM, CREATOR, SIMULATION } from '../styles/strings'
 import '../styles/chooseMode.css'
 
-export default ({ onClick }) => {
-    const [clicked, changeClicked] =  React.useState(1)
+export default ({ chooseMode, clicked }) => {
     const onClickHandler = (mode, index) => {
-        changeClicked(index)
-        // onClick(mode)
+        chooseMode(mode, index)
     }
 
     return (
         <div id="choose-mode-wrapper">
-            <Text text={'Choose Mode'} fontSize={24} color={Colors.grey} />
-            <br />
             <Button 
                 onClick={() => onClickHandler(SOLAR_SYSTEM, 1)} 
                 text={SOLAR_SYSTEM} 

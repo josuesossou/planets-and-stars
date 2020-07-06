@@ -5,8 +5,6 @@ import '../styles/styles.css'
 
 /**
  * @param {string} message the message to display
- * @param {function} onClick close function
- * @param {boolean} close if true close the alert
  */
 export default ({ message }) => {
     const color = 'black'

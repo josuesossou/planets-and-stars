@@ -1,0 +1,23 @@
+@keyframes fadeIn {
+    0% { 
+        opacity: 0.3;
+    }
+    100% { 
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0.3;
+    }
+}
+
+#link-text .link-on-click-effect-fade-in {
+    animation: fadeIn 0.8s forwards;
+}
+#link-text .link-on-click-effect-fade-out {
+    animation: fadeOut 0.8s forwards;
+}

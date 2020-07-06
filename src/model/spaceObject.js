@@ -5,6 +5,7 @@ import MaxHeap from '../util/heap'
 export default class SpaceObject {
     /**
      * Generates a space object. Could be a star or a planet; even moons.
+     * 1 au = 11,727  pixels
      * @param {string} id the id of the planet
      * @param {number} radius the radius of the planet
      * @param {number} mass the mass of the planet
@@ -14,7 +15,7 @@ export default class SpaceObject {
      * @param {String} type The type of space object, wether it is a planet or star
      */
     constructor(radius, mass, color, name, canvas, type, scaleFactor) {
-        if (!scaleFactor || scaleFactor < 1) scaleFactor = 1
+        // if (!scaleFactor || scaleFactor < 1) scaleFactor = 1
 
         this.id = uuidv4()
         this.objectData = {
@@ -22,13 +23,14 @@ export default class SpaceObject {
             orbit: 0,
             speed: 0
         } // example {orbit: 10, speed: 10, position: [px,py,pz]}
-        this.radius = radius / scaleFactor
+        this.radius = radius * scaleFactor
         this.mass = mass
         this.color = color
         this.name = name
         this.spaceObjectAdjecencies = new MaxHeap() // contains the distance, force, and id of any other space object that has been added
         this.canvas = canvas
-        this.objectMesh = null // holds the planet object
+        this.objectMesh = null // holds the planet or star object
+        this.orbitMesh = null // holds the orbit object
         this.type  = type
         this.scaleFactor = scaleFactor
     }
@@ -88,9 +90,11 @@ export default class SpaceObject {
         const spacedPoints = shape.createSpacedPointsGeometry(128);
         spacedPoints.rotateX(THREE.Math.degToRad(-90));
 
-        return new THREE.Line(spacedPoints, new THREE.LineBasicMaterial({
+        this.orbitMesh = new THREE.Line(spacedPoints, new THREE.LineBasicMaterial({
             color: orbitLineColor || this.color || Math.random() * 0xffffff
         }));
+
+        return this.orbitMesh
     }
 
     /**
@@ -107,7 +111,7 @@ export default class SpaceObject {
      */
     setOrbit() {
         const maxObj =this.spaceObjectAdjecencies.getMax()
-        this.objectData.orbit = (maxObj.distance / this.scaleFactor) + maxObj.radius
+        this.objectData.orbit = (maxObj.distance * 11727 * this.scaleFactor) + maxObj.radius
     }
 
     /**
@@ -115,7 +119,7 @@ export default class SpaceObject {
      */
     setSpeed() {
         const maxObj = this.spaceObjectAdjecencies.getMax()
-        this.objectData.speed  = maxObj.speed / this.scaleFactor
+        this.objectData.speed  = maxObj.speed
     }
 
     /**

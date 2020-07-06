@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, Button } from '../shared/Shared'
+import { Text, Button } from './Shared'
 import { Colors } from '../styles/inlineStyles'
+import { GreenCheck } from '../assets/icons/Icons'
 import '../styles/plan.css'
 import '../styles/styles.css'
 
@@ -19,12 +20,12 @@ export default ({ planTitle, monthlyPrice, discription, planOffers, onClick }) =
             <Text text={'month'} fontSize={25} style={styles.monthlyPriceTwoStyle} />
         </div>
         <Text text={discription} style={styles.discriptionStyle} fontSize={10} />
-        <Button text='Choose Plan' capitalize onClick={onClick} style={styles.buttonStyle} />
+        <Button text='Choose Plan' capitalize onClick={() => onClick(planTitle)} style={styles.buttonStyle} />
         {
             planOffers.map((plan, index) => (
                 <div key={plan + index} className='plan-offers'>
                     <Text text={plan} fontSize={24} color={Colors.grey} />
-                    <img alt='green-check' />
+                    <img alt='green-check' src={GreenCheck}  />
                 </div>
             ))
         }
@@ -50,5 +51,8 @@ const styles = {
         height: 60,
         width: '100%',
         marginBottom: 50
+    },
+    imgStyle: {
+       width: 27
     }
 }

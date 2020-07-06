@@ -1,0 +1,24 @@
+#show-menu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 0;
+}
+
+#show-menu img {
+    transform: rotate(90deg);
+    height: 30%;
+    width: 30%;
+}
+.show-menu-show {
+    opacity: 1;
+    transition: opacity 0.5s
+}
+.show-menu-hide {
+    opacity: 0;
+    transition: opacity 0.5s
+}

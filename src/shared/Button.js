@@ -6,27 +6,52 @@ import '../styles/button.css'
 /**
  * @param {function} onClick on click function
  * @param {string} text text of button
- * @param {string} type type of button. Values custom, normal,or black
+ * @param {string} type type of button. Values normal or black
  * @param {object} textStyle style of the text
  * @param {boolean} capitalize whether to capitalize the text or not
  * @param {boolean} disabled whether to disable the button
+ * @param {string} bgColor the background color of the button if it is custom. use this if you want to set a custom background color
+ * @param {string} color the color of the button text if it is custom. use this if you want to set a custom button text color
  */
-export default ({ onClick, text, type, textStyle, capitalize, style, disabled }) => {
+export default ({ onClick, text, type, textStyle, capitalize, style, disabled, bgColor, color, children }) => {
     const [effect, changeEffect] = React.useState('')
+    const mousedown = () => {
+        changeEffect('on-click-effect-fade-in')
+        
+    }
+    const mouseup = () => {
+        changeEffect('on-click-effect-fade-out')
+        if (!disabled) onClick()
+    }
     
     return (
         <div
             style={{ 
                 ...style, 
                 ...styles.borderStyle, 
-                borderColor: disabled ? Colors.lightGrey : Colors.black 
+                borderColor: disabled ? Colors.lightGrey : Colors.black,
+                backgroundColor: disabled && type === 'black' ? Colors.lightGrey :
+                                    type === 'black' ? Colors.black : bgColor || Colors.white,
             }}      
-            onClick={type === 'custom' || disabled ? null : onClick}
-            onMouseDown={() => disabled ? null : changeEffect('on-click-effect-fade-in')}
-            onMouseUp={() => disabled ? null : changeEffect('on-click-effect-fade-out')}
+            onMouseDown={mousedown}
+            onMouseUp={ mouseup}
         >
-            <div style={styles.onClickEffectStyle} className={effect}></div>
-            <Text color={disabled ? Colors.lightGrey : Colors.black} style={textStyle} capitalize={capitalize} text={text} />
+            <div 
+                style={{
+                    ...styles.onClickEffectStyle,
+                    backgroundColor: type === 'black' ? Colors.lightWhite : Colors.lighterGrey, 
+                }} 
+                className={effect}
+            ></div>
+ 
+            <Text 
+                color={disabled ? Colors.lightGrey : 
+                    type === 'black' ? Colors.white : color || Colors.black} 
+                style={textStyle} 
+                capitalize={capitalize} 
+                text={text} 
+            />
+            {children}
         </div>
     )
 }
@@ -37,7 +62,6 @@ const styles = {
         border: '2px solid',
         outline: 'none',
         borderRadius: 0,
-        backgroundColor: '#ffffff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -46,7 +70,6 @@ const styles = {
     onClickEffectStyle: {
         width: '100%',
         height: '100%',
-        backgroundColor: Colors.lighterGrey, 
         position: 'absolute',
         zIndex: 0,
         outline: 'none', 

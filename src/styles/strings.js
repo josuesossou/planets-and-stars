@@ -1,5 +1,10 @@
-export const SOLAR_SYSTEM = 'Solar System';
-export const CREATOR = 'Creator';
-export const SIMULATION = 'Simulation';
-export const PREMIUM_PLAN_DISCRIPTION = 'For teachers and anyone who is learning astronomy or in the field.';
+export const SOLAR_SYSTEM = 'Solar System'
+export const CREATOR = 'Creator'
+export const SIMULATION = 'Simulation'
+export const PREMIUM_PLAN_DISCRIPTION = 'For teachers and anyone who is learning astronomy or in the field.'
 export const STANDARD_PLAN_DISCRIPTION = 'For everyone who is getting started.'
+export const STANDARD_TEXT = 'Standard'
+export const PREMIUM_TEXT = 'Premium'
+export const SIGN_UP_AGREEMENT_TEXT = 'Creating an account means you agree with our Terms of Service and Privacy Policy.'
+export const SUBSCRIPTION_AGREEMENT_TEXT = 'By clicking the “Start Membership” button below, you agree to our Terms of Use, Privacy Statement, that you are over 18, and that … will automatically continue your subscription and charge the membership fee (currently $1.99) to your payment method on a monthly basis until you cancel. You may cancel at any time. To cancel, go online to your Account and click “Cancel Membership.” There are no refunds or credits for partial months.'
+export const ALERT_MESSAGE = 'Press "m" to toggle the menu'

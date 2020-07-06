@@ -1,0 +1,21 @@
+#auth-wrapper {
+    display: flex;
+    align-items: stretch;
+    width: 60%;
+    height: auto;
+    padding: 3em 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+
+.auth-show {
+    opacity: 1;
+    transition: opacity 0.5s
+}
+.auth-hide {
+    opacity: 0;
+    transition: opacity 0.5s
+}

@@ -1,0 +1,10 @@
+#authentication-wrapper {
+    width: 60%;
+    border-left: 2px solid #000000;
+    padding: 0 3em
+}
+
+#authentication-wrapper .name-text-fields {
+    display: flex;
+    justify-content: space-between
+}
