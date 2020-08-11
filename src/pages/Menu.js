@@ -1,10 +1,10 @@
 import React from 'react'
-import { CloseButton } from '../shared/Shared'
-import { CurrentMode, Scale, LoginSignupButtons } from '../components/Components'
+import { CloseButton, Button } from '../shared/Shared'
+import { CurrentMode, Scale } from '../components/Components'
 import '../styles/menu.css'
 
 
-export default ({ chooseMode, changeShow, show }) => {
+export default ({ chooseMode, changeShow, show, ignoreDistance, text, changeSpeed, changeSize }) => {
     const [close, changeClose] = React.useState('menu-show') // fade out animation when closed
 
     const closeCallback = () => {
@@ -21,21 +21,24 @@ export default ({ chooseMode, changeShow, show }) => {
     return show ? (
         <div id="menu" className={close}>
             <br />
-            <LoginSignupButtons />
+            {/* <LoginSignupButtons />
             <br />
-            <br />
+            <br /> */}
 
             <CurrentMode setMode={chooseMode} />
             <br />
             <br />
 
             <div className="scale-modifiers-wrapper">
-                <Scale min={1} max={20} title='Size'/>
-                <Scale min={1} max={20} title='Speed' />
+                {/* <Scale min={1} max={20} title='Size' inputOnChange={changeSize} /> */}
+                {/* <Scale min={1} max={20} title='Speed' inputOnChange={changeSpeed} /> */}
             </div>
-            <br />
-            <br />
-
+            
+            <Button 
+                text={text} 
+                style={{ width: '50%', height: 40 }}
+                onClick={ignoreDistance}
+            />
             <CloseButton radius={30} style={{ position: 'relative', alignSelf: 'flex-end' }} showHideText onClick={closeCallback} />
         </div>
     ) : null

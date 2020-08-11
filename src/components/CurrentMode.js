@@ -33,11 +33,13 @@ export default ({ setMode }) => {
                     borderBottom: `2px solid ${Colors.black}`,
                     width: 'fit-content',
                     height: 30,
+                    cursor: 'default'
                 }}
                 onClick={() => setModeOption(true)}
+                disabled
             />
 
-            {
+            {/* {
                 showModeOption ? (
                     <div>        
                         <br />
@@ -47,7 +49,7 @@ export default ({ setMode }) => {
                         <br />
                     </div>
                 ): null
-            }
+            } */}
             
         </div>
     )

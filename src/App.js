@@ -36,6 +36,8 @@ class App extends React.Component {
 			textScaleFactor: 10, 
 			showAuth: false,
 			showMenu: false,
+			ignoreDistance: false,
+			ignoreText: 'Ignore Distance'
 		}
 
 		this.camera = null
@@ -79,7 +81,16 @@ class App extends React.Component {
 	 */
 	generateSolarSystem() {
 		solarSystem.forEach((obj) => {
-			const solarSysObject = createSpaceObject(obj.radius, obj.mass, obj.color, obj.name, document.createElement('canvas'), obj.type, this.state.scaleFactor)
+			const solarSysObject = createSpaceObject(
+				obj.radius, 
+				obj.mass, 
+				obj.color, 
+				obj.name, 
+				document.createElement('canvas'), 
+				obj.type, 
+				this.state.scaleFactor, 
+				this.state.ignoreDistance
+			);
 			solarSysObject.setPosition(obj.position[0], obj.position[1], obj.position[2])
 
 			this.state.spaceObjects.push(solarSysObject)
@@ -130,7 +141,7 @@ class App extends React.Component {
 	}
 
 	renderScene() {
-		this.renderer.render( this.scene, this.camera );
+		this.renderer.render( this.scene, this.camera);
 	}
 
 	animate = () => {
@@ -197,6 +208,17 @@ class App extends React.Component {
 		})
 	}
 
+	changeIgnoreDistance = async () => {
+		this.setState((prev) => ({ 
+			ignoreDistance: !prev.ignoreDistance,
+			// scaleFactor: prev.ignoreDistance ? 0.001 : 1,
+			ignoreText: prev.ignoreDistance ? 'Ignore Proportion' : 'Restore'
+		}));
+
+		await this.removeAllFromScene();
+		this.generateSolarSystem()
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -206,11 +228,13 @@ class App extends React.Component {
 				
 				<Auth show={this.state.showAuth} changeShow={(show) => this.setState({ showAuth: show })} /> 
 				
-				<Menu 
+				<Menu
 					chooseMode={this.setMode} 
 					changeShow={(show) => this.setState({ showMenu: false })} 
 					applyMode={this.changeAppModeState} 
 					show={this.state.showMenu}
+					ignoreDistance={() => this.changeIgnoreDistance()}
+					text={this.state.ignoreText}
 				/>
 
 				{
