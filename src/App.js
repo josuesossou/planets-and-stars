@@ -212,7 +212,7 @@ class App extends React.Component {
 		this.setState((prev) => ({ 
 			ignoreDistance: !prev.ignoreDistance,
 			// scaleFactor: prev.ignoreDistance ? 0.001 : 1,
-			ignoreText: prev.ignoreDistance ? 'Ignore Proportion' : 'Restore'
+			ignoreText: prev.ignoreDistance ? 'Ignore Distance' : 'Restore'
 		}));
 
 		await this.removeAllFromScene();
