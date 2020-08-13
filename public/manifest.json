@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Planets and Stars",
+  "name": "Simulating the solar system",
   "icons": [
     {
       "src": "solarsys.jpg",
@@ -8,7 +8,7 @@
       "type": "image/jpg"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
