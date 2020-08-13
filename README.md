@@ -50,6 +50,8 @@ This project is to show an estimate of how the solar system will look like if a 
 
 [Threejs](threejs.org)
 
+### Live Demo
+[Demo](https://planetsandstars.herokuapp.com/)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
