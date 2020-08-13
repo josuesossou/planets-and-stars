@@ -21,3 +21,15 @@
     opacity: 0;
     transition: opacity 0.5s
 }
+
+@media only screen and (max-width: 800px) {
+    #alert-message  {
+        width: 50vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #alert-message  {
+        width: 90vw;
+    }
+}

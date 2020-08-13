@@ -25,3 +25,15 @@
     opacity: 0;
     transition: opacity 0.5s
 }
+
+@media only screen and (max-width: 800px) {
+    #menu  {
+        width: 50vw;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #menu  {
+        width: 90vw;
+    }
+}
